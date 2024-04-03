@@ -1,7 +1,8 @@
+import "../../styles/current_forcast.css"
 export default function CurrentForcast () {
     return (
-        <div id="current-forcast-component">
-            <form id="searc-bar">
+        <div id="current-forcast-container">
+            <form id="search-bar">
                 <input type="search" placeholder="Find location"></input>
                 <button type="submit"></button>
             </form>

@@ -1,0 +1,44 @@
+#current-forcast-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width:50vw;
+    aspect-ratio: 1/1;
+    border:none;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px rgba(128, 128, 128, 0.699); 
+    background-color:rgb(41, 54, 95);
+}
+
+#current-forcast-container #info {
+    display: inline-flex;
+    justify-content: space-around;
+}
+
+#current-forcast-container #info > span {
+    border:solid red;
+}
+
+#search-bar {
+    display: inline-flex;
+    width:90%;
+    height:10%;
+}
+
+#search-bar > input {
+    width:90%;
+    height:100%;
+    border:none;
+    border-radius:5px 0 0 5px;
+    background-color: whitesmoke;
+    padding-left: 5%;
+}
+
+#search-bar > button {
+    width:10%;
+    height:100%;
+    border:none;
+    background-color: rgb(9, 25, 54);
+    border-radius: 0 5px 5px 0;
+}
