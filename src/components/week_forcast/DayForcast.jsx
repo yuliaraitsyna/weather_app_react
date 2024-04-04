@@ -1,3 +1,4 @@
+import "../../styles/day_forcast.css"
 export default function DayForcast() {
     return(
         <div id="day-forcast-container">

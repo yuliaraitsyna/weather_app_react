@@ -1,6 +1,8 @@
 import React from "react";
 import CurrentForcast from "./components/current_forcast/CurrentForcast.jsx";
 import DayForcast from "./components/week_forcast/DayForcast.jsx";
+import "./styles/App.css"
+
 const DAYS = {
     Mon: 0,
     Tue: 1,
@@ -12,7 +14,7 @@ const DAYS = {
 }
 const App = () => {
     return (
-        <div>
+        <div id="App">
             <CurrentForcast></CurrentForcast>
             <div id="week-forcast-container">
                 {Object.keys(DAYS).map(day => (

@@ -1,0 +1,10 @@
+
+#day-forcast-container {
+    width:calc(100%/7*0.85);
+    padding:calc(100%/7*0.05);
+    aspect-ratio: 1/1;
+    border:none;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px rgba(128, 128, 128, 0.699); 
+    background-color:rgb(41, 54, 95);
+}

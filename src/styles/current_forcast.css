@@ -3,7 +3,8 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width:50vw;
+    align-self: center;
+    width:50%;
     aspect-ratio: 1/1;
     border:none;
     border-radius: 10px;
