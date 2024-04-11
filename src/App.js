@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CurrentForcast from "./components/current_forcast/CurrentForcast.jsx";
 import DayForcast from "./components/week_forcast/DayForcast.jsx";
+import getCurrentCityName from "./code/openweathermap.js";
 import "./styles/App.css";
 
 const DAYS = {
@@ -14,45 +15,24 @@ const DAYS = {
 };
 
 const App = () => {
+    const [currentCityName, setCurrentCityName] = useState(null);
     const [data, setData] = useState(null);
     
     useEffect(() => {
-        const options = {
-            enableHighAccuracy: true,
-            timeout: 5000,
-            maximumAge: 0,
-        };
-        
-        async function success(pos) {
-            let cityQuery;
-            try {
-                const response = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&limit=5&appid=485af0f1332687e14479e1ab60d122cb`);
-                const data = await response.json();
-                if(data && data.length > 0) {
-                    cityQuery = data[0].name;
-                    console.log(cityQuery);
-                }
-                else {
-                    throw error("Failed to get the current position");
-                }
-            }
-            catch(error) {
-                console.log(error.message);
-            }
-        }
-          
-        function error(err) {
-            console.warn(`ERROR(${err.code}): ${err.message}`);
-        }
-         
-        try {
-            navigator.geolocation.getCurrentPosition(success, error, options);
-        }
-        catch(error) {
-            console.log(error);
-        }
-        
+        getCurrentCityName()
+            .then(city => {
+                setCurrentCityName(city);
+            })
+            .catch(error => {
+                console.error("Error with getting city name: ", error);
+            })
     }, []);
+
+    useEffect(() => {
+        if(currentCityName) {
+            console.log(currentCityName);
+        }
+    }, [currentCityName])
 
     return (
         <div id="App">
