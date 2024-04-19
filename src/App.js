@@ -6,7 +6,6 @@ import { getCurrentForcast, getWeekForcast } from "./code/weather_api.js";
 import "./styles/App.css";
 
 const App = () => {
-    
     const [currentCityName, setCurrentCityName] = useState(null);
     const [currentForecast, setCurrentForecast] = useState(
         {
@@ -50,10 +49,17 @@ const App = () => {
         }
     }, [currentCityName])
 
+    function handleSeachBarSubmit(event) {
+        event.preventDefault();
+        let cityQuery = event.target.querySelector('input[type="search"]').value.trim();
+        setCurrentCityName(cityQuery);
+    }
+
     return (
         <div id="App">
             <CurrentForcast 
                 data={currentForecast}
+                onSubmit={handleSeachBarSubmit}
             />
             <div id="week-forcast-container">
                {weekForecast && weekForecast.map((data, index) => (

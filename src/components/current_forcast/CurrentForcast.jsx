@@ -3,7 +3,7 @@ import "../../styles/current_forcast.css"
 export default function CurrentForcast (props) {
     return (
         <div id="current-forcast-container">
-            <form id="search-bar">
+            <form id="search-bar" onSubmit={props.onSubmit}>
                 <input type="search" placeholder="Find location"></input>
                 <button type="submit"></button>
             </form>
