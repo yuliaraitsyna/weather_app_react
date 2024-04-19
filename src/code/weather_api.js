@@ -27,20 +27,13 @@ export async function getCurrentForcast(cityQuery) {
 
 
 export async function getWeekForcast(cityQuery) {
-    const weekForecast = {
-        location: cityQuery,
-        weekData: null
-    }
-
     try {
         const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=fd14bf79a3bd4f40981191408240404&q=${cityQuery}&days=7&aqi=no&alerts=no`);
         if(!response.ok) {
             throw new Error('Failed to fetch week forcast data');
         }
         const data = await response.json();
-        weekForecast.weekData = data.forecast;
-        console.log("Week forcast promise get: ", weekForecast.weekData)
-        return weekForecast;
+        return data.forecast.forecastday;
     }
     catch(error) {
         throw error;

@@ -18,12 +18,7 @@ const App = () => {
             icon: null
         }
     );
-    const [weekForecast, setWeekForecast] = useState(
-        {
-            location:currentCityName,
-            data:null
-        }
-    );
+    const [weekForecast, setWeekForecast] = useState(null);
     
     useEffect(() => {
         getCurrentCityName()
@@ -61,9 +56,9 @@ const App = () => {
                 data={currentForecast}
             />
             <div id="week-forcast-container">
-               {
-                weekForecast && weekForecast.data  && console.log(weekForecast.data)
-               }
+               {weekForecast && weekForecast.map((data, index) => (
+                    <DayForcast key={index} data={data} />
+                ))}
             </div>
         </div>
     );

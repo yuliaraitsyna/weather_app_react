@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import "../../styles/current_forcast.css"
 export default function CurrentForcast (props) {
-    console.log(props);
     return (
         <div id="current-forcast-container">
             <form id="search-bar">
