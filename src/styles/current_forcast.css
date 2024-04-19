@@ -67,3 +67,9 @@ span, p {
     width:20px;
     height:20px;
 }
+
+#location-img {
+    content: url("../img/location.png");
+    width:20px;
+    height:20px;
+}

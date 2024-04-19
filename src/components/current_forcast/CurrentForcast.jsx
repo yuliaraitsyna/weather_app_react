@@ -15,7 +15,7 @@ export default function CurrentForcast (props) {
                 <span id="humidity-display" name="himidity"><img id="humidity-img"></img>{props.data.humidity}</span>
                 <span id="uv-display" name="uv"><img id="uv-img"></img>{props.data.uv}</span>
             </div>
-            <p id="location-display" name="location"><img></img>{props.data.location}</p>
+            <p id="location-display" name="location"><img id="location-img"></img>{props.data.location}</p>
         </div>
     )
 }

@@ -5,19 +5,10 @@ import getCurrentCityName from "./code/openweathermap.js";
 import { getCurrentForcast, getWeekForcast } from "./code/weather_api.js";
 import "./styles/App.css";
 
-const DAYS = {
-    Mon: 0,
-    Tue: 1,
-    Wed: 2,
-    Thu: 3,
-    Fri: 4,
-    Sat: 5,
-    Sun: 6
-};
-
 const App = () => {
+    
     const [currentCityName, setCurrentCityName] = useState(null);
-    const [currentForcast, setCurrentForcast] = useState(
+    const [currentForecast, setCurrentForecast] = useState(
         {
             location: currentCityName,
             temp_c: null,
@@ -27,7 +18,7 @@ const App = () => {
             icon: null
         }
     );
-    const [weekForcast, setWeekForcast] = useState(
+    const [weekForecast, setWeekForecast] = useState(
         {
             location:currentCityName,
             data:null
@@ -47,16 +38,16 @@ const App = () => {
     useEffect(() => {
         if(currentCityName) {
             getCurrentForcast(currentCityName)
-                .then(currentForcastPromise => {
-                    setCurrentForcast(currentForcastPromise);
+                .then(currentForecastPromise => {
+                    setCurrentForecast(currentForecastPromise);
                 })
                 .catch(error => {
-                    console.error("Failed to get current forcast data: ", error);
+                    console.error("Failed to get current forecast data: ", error);
                 });
 
             getWeekForcast(currentCityName)
-                .then(weekForcastPromise => {
-                    setWeekForcast(weekForcastPromise);
+                .then(weekForecastPromise => {
+                    setWeekForecast(weekForecastPromise);
                 })
                 .catch(error => {
                     console.log("Failed to get week forcast data: ", error);
@@ -67,16 +58,12 @@ const App = () => {
     return (
         <div id="App">
             <CurrentForcast 
-                data={currentForcast}
+                data={currentForecast}
             />
             <div id="week-forcast-container">
-                {Object.keys(DAYS).map(day => (
-                    <DayForcast
-                        key={day}
-                        day={day}
-                        data={weekForcast}
-                    />
-                ))}
+               {
+                weekForecast && weekForecast.data  && console.log(weekForecast.data)
+               }
             </div>
         </div>
     );
