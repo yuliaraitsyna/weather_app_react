@@ -2,22 +2,12 @@ import React, { useEffect, useState } from "react";
 import CurrentForcast from "./components/current_forcast/CurrentForcast.jsx";
 import DayForcast from "./components/week_forcast/DayForcast.jsx";
 import getCurrentCityName from "./code/openweathermap.js";
-import { getCurrentForcast } from "./code/weather_api.js";
+import { getCurrentForcast, getWeekForcast } from "./code/weather_api.js";
 import "./styles/App.css";
-
-const DAYS = {
-    Mon: 0,
-    Tue: 1,
-    Wed: 2,
-    Thu: 3,
-    Fri: 4,
-    Sat: 5,
-    Sun: 6
-};
 
 const App = () => {
     const [currentCityName, setCurrentCityName] = useState(null);
-    const [currentForcast, setCurrentForcast] = useState(
+    const [currentForecast, setCurrentForecast] = useState(
         {
             location: currentCityName,
             temp_c: null,
@@ -27,6 +17,7 @@ const App = () => {
             icon: null
         }
     );
+    const [weekForecast, setWeekForecast] = useState(null);
     
     useEffect(() => {
         getCurrentCityName()
@@ -40,28 +31,39 @@ const App = () => {
 
     useEffect(() => {
         if(currentCityName) {
-            console.log(currentCityName);
             getCurrentForcast(currentCityName)
-                .then(currentForcastPromise => {
-                    console.log(currentForcastPromise);
-                    setCurrentForcast(currentForcastPromise);
+                .then(currentForecastPromise => {
+                    setCurrentForecast(currentForecastPromise);
                 })
                 .catch(error => {
-                    console.error("Failed to get current forcast: ", error);
+                    console.error("Failed to get current forecast data: ", error);
+                });
+
+            getWeekForcast(currentCityName)
+                .then(weekForecastPromise => {
+                    setWeekForecast(weekForecastPromise);
+                })
+                .catch(error => {
+                    console.log("Failed to get week forcast data: ", error);
                 });
         }
     }, [currentCityName])
 
+    function handleSeachBarSubmit(event) {
+        event.preventDefault();
+        let cityQuery = event.target.querySelector('input[type="search"]').value.trim();
+        setCurrentCityName(cityQuery);
+    }
+
     return (
         <div id="App">
-            <CurrentForcast />
+            <CurrentForcast 
+                data={currentForecast}
+                onSubmit={handleSeachBarSubmit}
+            />
             <div id="week-forcast-container">
-                {Object.keys(DAYS).map(day => (
-                    <DayForcast
-                        key={day}
-                        day={day}
-                        data={currentForcast}
-                    />
+               {weekForecast && weekForecast.map((data, index) => (
+                    <DayForcast key={index} data={data} />
                 ))}
             </div>
         </div>

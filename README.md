@@ -26,3 +26,6 @@ Used to get latitude and longitude of the current user's position.
 Geocoding API for reverse geocoding to get current city name.
 ### [Weather API](https://www.weatherapi.com/api-explorer.aspx#forecast)
 Free weather API to get current and week forcast.
+
+## Functionality
+<img src="https://github.com/yuliaraitsyna/weather_app_react/blob/development/doc/weather_app.png" alt="Weather App">

@@ -17,8 +17,8 @@
     justify-content: space-around;
 }
 
-#current-forcast-container #info > span {
-    border:solid red;
+span, p {
+    color:white;
 }
 
 #search-bar {
@@ -42,4 +42,34 @@
     border:none;
     background-color: rgb(9, 25, 54);
     border-radius: 0 5px 5px 0;
+}
+
+#temp_c-img {
+    content: url("../img/temp_c.png");
+    width:20px;
+    height:20px;
+}
+
+#wind_speed-img {
+    content: url("../img/wind.png");
+    width:20px;
+    height:20px;
+}
+
+#humidity-img {
+    content: url("../img/humidity.png");
+    width:20px;
+    height:20px;
+}
+
+#uv-img {
+    content: url("../img/uv.png");
+    width:20px;
+    height:20px;
+}
+
+#location-img {
+    content: url("../img/location.png");
+    width:20px;
+    height:20px;
 }
