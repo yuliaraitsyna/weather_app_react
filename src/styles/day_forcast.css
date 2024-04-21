@@ -1,10 +1,83 @@
+:root {
+    --bg-day-color1: #2a2a2a86;
+    --bg-day-color2: #ffffff00;
+    --day-shadow: 0px 5px 10px #64808286;
+    --bg-day-angle: 0deg;
+    --background-day-gradient: linear-gradient(var(--bg-day-angle), var(--bg-day-color1), var(--bg-day-color2));
+    --day-size: calc(var(--week-container-wdth)/3 - var(--week-container-wdth)/6);
+}
 
 #day-forcast-container {
-    width:calc(100%/7*0.85);
-    padding:calc(100%/7*0.05);
+    padding: calc(var(--day-size)*0.05);
+    display: flex;
+    flex-direction: column;
+    gap:calc(var(--day-size)*0.05);
+    width:var(--day-size);
+    height:var(--day-size);
     aspect-ratio: 1/1;
-    border:none;
+    border:solid var(--bg-day-color1) 1px;
     border-radius: 10px;
-    box-shadow: 0px 10px 10px rgba(128, 128, 128, 0.699); 
-    background-color:rgb(41, 54, 95);
+    box-shadow: var(--day-shadow); 
+    background: var(--background-day-gradient);
+}
+
+#day-forcast-container > span {
+    width:calc(var(--day-size)*0.15);
+    height:calc(var(--day-size)*0.15);
+    font-size: 100%;
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#day-forcast-container > img {
+    width:calc(var(--day-size)*0.55);
+    height:calc(var(--day-size)*0.55);
+    align-self: center;
+}
+
+#day-forcast-container > :nth-child(1) {
+    align-self:self-end;
+}
+
+#day-forcast-container > :nth-child(3) {
+    align-self: center;
+}
+
+@media (max-width:390px) {
+    #day-forcast-container {
+        padding: calc(var(--day-size)*0.05*1.5);
+        gap:calc(var(--day-size)*0.05*1.5);
+        width:calc(var(--day-size)*1.5);
+        height:calc(var(--day-size)*1.5);
+    }
+
+    #day-forcast-container > span {
+        width:calc(var(--day-size)*0.15*1.5);
+        height:calc(var(--day-size)*0.15*1.5);
+    }
+
+    #day-forcast-container > img {
+        width:calc(var(--day-size)*0.55*1.5);
+        height:calc(var(--day-size)*0.55*1.5);
+    }
+}
+
+@media (max-width:600px) {
+        #day-forcast-container {
+        padding: calc(var(--day-size)*0.05*1.5);
+        gap:calc(var(--day-size)*0.05*1.5);
+        width:calc(var(--day-size)*1.5);
+        height:calc(var(--day-size)*1.5);
+    }
+
+    #day-forcast-container > span {
+        width:calc(var(--day-size)*0.15*1.5);
+        height:calc(var(--day-size)*0.15*1.5);
+    }
+
+    #day-forcast-container > img {
+        width:calc(var(--day-size)*0.55*1.5);
+        height:calc(var(--day-size)*0.55*1.5);
+    }
 }

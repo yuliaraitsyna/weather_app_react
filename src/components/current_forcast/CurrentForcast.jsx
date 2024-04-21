@@ -5,7 +5,7 @@ export default function CurrentForcast (props) {
         <div id="current-forcast-container">
             <form id="search-bar" onSubmit={props.onSubmit}>
                 <input type="search" placeholder="Find location"></input>
-                <button type="submit"></button>
+                <button type="submit"><img id="search-img"></img></button>
             </form>
             <img id="current-forcast-icon" name="current-forcast" src={props.data.icon}></img>
             <span id="temperature-display" name="temperature"><img id="temp_c-img"></img>{props.data.temp_c}</span>
