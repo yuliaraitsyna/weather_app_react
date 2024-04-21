@@ -29,3 +29,10 @@ Free weather API to get current and week forcast.
 
 ## Functionality
 <img src="https://github.com/yuliaraitsyna/weather_app_react/blob/development/doc/weather_app.png" alt="Weather App">
+
+## How to run
+Install dependencies (from Technologies section). 
+Than run this in terminal:
+~~~
+npm start
+~~~
