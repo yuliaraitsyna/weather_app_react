@@ -30,6 +30,10 @@ Free weather API to get current and week forcast.
 ## Functionality
 <img src="https://github.com/yuliaraitsyna/weather_app_react/blob/development/doc/weather_app.png" alt="Weather App">
 
+## Styles
+Implemented animation for loading. It apears when the current location is being calculated and current city name being fetched.
+Implemented error handling page that uploads when any error occures.
+
 ## How to run
 Install dependencies (from Technologies section). 
 Than run this in terminal:
