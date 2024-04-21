@@ -1,0 +1,9 @@
+#error-img {
+    content: url("../img/error.png");
+}
+
+#error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
